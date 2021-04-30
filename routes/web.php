@@ -15,6 +15,39 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
+Route::get('cache_clear', function () {
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
+    dd("cache:clear");
+});
+Route::get('config_clear', function () {
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+    dd("config:clear");
+});
+Route::get('storage', function () {
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+    dd("storage");
+});
+Route::get('migrate', function () {
+    \Illuminate\Support\Facades\Artisan::call('migrate');
+    dd("migrate");
+});
+Route::get('seed', function () {
+    \Illuminate\Support\Facades\Artisan::call('db:seed');
+    dd("seed");
+});
+Route::get('up', function () {
+    \Illuminate\Support\Facades\Artisan::call('up');
+    dd("live");
+});
+Route::get('down', function () {
+    \Illuminate\Support\Facades\Artisan::call('down');
+    dd("maintenance");
+});
+Route::get('php_info', function () {
+    phpinfo();
+    return "true";
+});
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
