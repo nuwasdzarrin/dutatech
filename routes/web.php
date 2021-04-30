@@ -15,6 +15,18 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
+Route::get('key_generate', function () {
+    \Illuminate\Support\Facades\Artisan::call('key:generate');
+    dd("key:generate");
+});
+Route::get('make_auth', function () {
+    \Illuminate\Support\Facades\Artisan::call('make:auth');
+    dd("make:auth");
+});
+Route::get('voyager_install', function () {
+    \Illuminate\Support\Facades\Artisan::call('voyager:install --with-dummy');
+    dd("voyager:install --with-dummy");
+});
 Route::get('cache_clear', function () {
     \Illuminate\Support\Facades\Artisan::call('cache:clear');
     dd("cache:clear");
